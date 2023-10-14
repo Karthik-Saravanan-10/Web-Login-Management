@@ -1,0 +1,110 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Management</title>
+</head>
+
+<body style="background: fixed; background-color: white;">
+    <form id="form" onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+        <div class="container" style="background-color: white;">
+            <h2 style="text-align: center; font-family: 'Courier New', Courier, monospace;">Employee Informations</h2>
+            <div class="input-group" style="margin: auto;">
+                <div class="mb-3">
+                    <label class="form-label" for="inputuser">Name:</label>
+                    <input type="text" class="form-control" id="user" placeholder="User Name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="inputage">Age:</label>
+                    <input type="number" class="form-control" id="old" placeholder="Age" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="inputmail">Email:</label>
+                    <input type="email" class="form-control" id="mail" placeholder="email08@gmail.com" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="inputnumber">Mobile Number:</label>
+                    <input type="number" class="form-control" id="number" placeholder="Mobile Number" required>
+                </div>
+                <br> <br>
+                <button type="submit" style="margin-left: 240px;" class="btn btn-primary"
+                    onclick="validateForm()">submit</button>
+            </div> <br>
+            <div style="background-color: gray; padding: 10px;">
+                <table class="table" style="margin-left: auto; padding-top: 100%;" id="table">
+                    <thead>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Email ID</th>
+                        <th>Mobile Number</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+    <script>
+
+        var selectedRow = null;
+
+        function validateForm() {
+            var user = document.getElementById("user").value;
+            var old = document.getElementById("old").value;
+            var email = document.getElementById("mail").value;
+            var number = document.getElementById("number").value;
+
+            if (user === "" || old === "" || email === "" || number === "") {
+                alert("Please fill in all the inputs.");
+                return false;
+            } else if (old.length > 100 || number.length > 10) {
+                alert("Character limit exceeded for Age (<=100) or Number (<=10).");
+                return false;
+            } else {
+                insertRecord();
+            }
+        }
+
+        function insertRecord() {
+            var table = document.getElementById("table");
+            var row = table.insertRow(1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+
+            cell1.innerHTML = document.getElementById("user").value;
+            cell2.innerHTML = document.getElementById("old").value;
+            cell3.innerHTML = document.getElementById("mail").value;
+            cell4.innerHTML = document.getElementById("number").value;
+
+            cell5.innerHTML = `<input type="button" value="Edit" onClick="updateRecord(this)">
+    <input type="button" value="Delete" onclick="deleteRecord(this)">`;
+
+            document.getElementById("form").reset();
+        }
+
+        function deleteRecord(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        function updateRecord(td) {
+            var row = td.parentNode.parentNode;
+            selectedRow = row;
+            document.getElementById("user").value = row.cells[0].innerHTML;
+            document.getElementById("old").value = row.cells[1].innerHTML;
+            document.getElementById("mail").value = row.cells[2].innerHTML;
+            document.getElementById("number").value = row.cells[3].innerHTML;
+        }
+    </script>
+</body>
+
+</html>

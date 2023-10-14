@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Create An Account</title>
+</head>
+
+<body>
+    <form class="con-box" action="/dash" method="post">
+        <div class="container">
+            <div class="table">
+                <h1 class="text-primary" style="font-family: Times New Roman, Times, serif; text-align: center;">Register</h1>
+                <label for="inputuser" class="sr-only">FirstName</label> <br>
+                <input type="text" id="inputfirst" placeholder="FirstName" name="inputfirst" required value="">
+                <br>
+                <label for="inputlast" class="sr-only">LastName</label> <br>
+                <input type="text" id="inputlast" placeholder="LastName" name="inputlast" required value="">
+                <br>
+                <label for="inputuser" class="sr-only">UserName</label> <br>
+                <input type="text" id="inputuser" placeholder="UserName" name="inputuser" required value="">
+                <br>
+                <label for="pass" class="sr-only">password</label><br>
+                <input type="password" id="password" placeholder="Password" name="password" required value=""> <br>
+                <br>
+                <button class="btn btn-primary" type="submit" onsubmit="submit()">Sign up</button>
+            </div>
+            <div>
+                <p style="color: rgb(3, 145, 233);">Already have an account ? <a href="/login" style="color: rgb(60, 30, 130); font: bolder;">Sign in</a>.</p>
+            </div>
+        </div>
+    </form>
+
+    <style>
+        body {
+            background-color: black;
+        }
+        .container {
+            max-width: 390px;
+            margin: 150px auto;
+            padding: 30px;
+            border: 2px solid black;
+            border-radius: 20px;
+            box-shadow: 5px 1px  10px 10px  white;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: #ddd;
+            outline: 3px solid blue;
+        }
+    </style>
+
+</body>
+
+</html>
